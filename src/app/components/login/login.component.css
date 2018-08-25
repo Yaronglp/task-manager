@@ -1,0 +1,35 @@
+.login-form{
+  width:500px;
+  height:330px;
+  padding:20px;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 0 15px;
+  background: #fff;
+  border-radius: 3px;
+}
+
+.login-form mat-form-field {
+  margin-top:15px;
+}
+
+.title-wrapper{
+  margin-bottom:10px;
+  align-self: center;
+}
+
+.title{
+  font-size:2em;
+  font-weight:bold;
+}
+
+.login-btn{
+  margin-top:20px;
+  align-self: center;
+}
+
+.login-error-msg{
+  align-self: center;
+  margin-top: 5px;
+}

@@ -1,0 +1,13 @@
+<h3 mat-dialog-title tabindex="1">{{data.title}}</h3>
+
+<div class="center-dialog-element">
+  <mat-dialog-content class="msg-container">
+    {{data.msg}}
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="buttons-wrapper">
+    <button class="mat-warn" mat-raised-button (click)="onCancel()">{{data.buttons.negative}}</button>
+    <button class="mat-primary" mat-raised-button (click)="onDelete(data.id)">{{data.buttons.positive}}</button>
+  </mat-dialog-actions>
+</div>
+

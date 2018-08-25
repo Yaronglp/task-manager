@@ -1,0 +1,26 @@
+<div class="profile-container center shadow">
+  <span>
+    <img *ngIf="user.profilePic; else annoyingBackground"
+         alt="pic"
+         [src]="user.profilePic"
+         class="profile-pic">
+
+    <ng-template #annoyingBackground>
+      <i class="material-icons"
+         matTooltip="You can insert your desired picture on user's setting"
+         matTooltipPosition="below">account_circle</i>
+    </ng-template>
+  </span>
+  <span class="truncate" matTooltip={{user.username}} matTooltipPosition="below">
+    {{displayedProfileName()}}
+  </span>
+  <span>
+    <i class="material-icons settings"
+       matTooltip="User Setting"
+       matTooltipPosition="below"
+       (click)=openDialog()>settings</i>
+  </span>
+  <span>
+    <button mat-button class="logout" (click)="onLogoutClick()">Logout</button>
+  </span>
+</div>

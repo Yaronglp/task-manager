@@ -1,0 +1,64 @@
+<div class="task-header">
+  <input matInput class="filter shadow" (keyup)="applyFilter($event.target.value)" placeholder="Search something...">
+  <button mat-fab
+          color="accent"
+          class="add-task-btn"
+          matTooltip="Create new Task"
+          matTooltipPosition="below"
+          (click)="openTaskDialog()">+</button>
+</div>
+
+<div class="task-holder shadow">
+  <div class="task-table-holder">
+    <table mat-table matSort matSortDisableClear="true" class="task" [dataSource]="dataSource">
+
+      <!-- title Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell ngClass="title-row" *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let element" ngClass="title-row" matTooltip={{element.title}} matTooltipPosition="below"> {{element.title}} </td>
+      </ng-container>
+
+      <!-- status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell ngClass="indication-row" *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell ngClass="indication-row" *matCellDef="let element">
+          <span class={{element.status.toLowerCase()}}>{{element.status}}</span>
+        </td>
+      </ng-container>
+
+      <!-- priority Column -->
+      <ng-container matColumnDef="priority">
+        <th mat-header-cell ngClass="indication-row" *matHeaderCellDef mat-sort-header> Priority </th>
+        <td mat-cell ngClass="indication-row" *matCellDef="let element">
+          <span class={{element.priority.toLowerCase()}}>{{element.priority}}</span>
+        </td>
+      </ng-container>
+
+      <!-- dueDate Column -->
+      <ng-container matColumnDef="dueDate">
+        <th mat-header-cell ngClass="indication-row" *matHeaderCellDef mat-sort-header> Due Date </th>
+        <td mat-cell ngClass="indication-row" *matCellDef="let element">{{element.dueDate}}</td>
+      </ng-container>
+
+      <!-- action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell ngClass="indication-row" *matHeaderCellDef> Action </th>
+        <td mat-cell ngClass="indication-row" *matCellDef="let element">
+          <i class="material-icons action-task" matTooltip="edit task" matTooltipPosition="below" (click)="openTaskDialog(element)">
+            edit
+          </i>
+          <i class="material-icons spacer action-task" matTooltip="delete task" matTooltipPosition="below" (click)="openDeleteDialog(element.id)">
+            delete
+          </i>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <mat-paginator #MatPaginator [pageSize]="10" showFirstLastButtons></mat-paginator>
+    <div class="no-items" *ngIf="dataSource.data.length === 0">{{ 'no items' | titlecase }}</div>
+  </div>
+</div>
+

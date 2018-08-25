@@ -1,0 +1,39 @@
+<form [formGroup]="inputGroup" (keydown.enter)="$event.stopPropagation();onSave()">
+  <h3 mat-dialog-title tabindex="1">{{dialogData.title}}</h3>
+
+  <mat-dialog-content class="info-wrapper">
+
+    <div class="center-dialog-element">
+
+      <mat-form-field>
+        <input matInput tabindex="1" placeholder="Username" formControlName="userNameControl">
+        <mat-error *ngIf="inputGroup.controls['userNameControl'].errors?.required">
+          Username is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput tabindex="2" placeholder="Email" formControlName="emailControl">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput tabindex="3" placeholder="Picture URL" formControlName="profilePicControl">
+      </mat-form-field>
+
+    </div>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="buttons-wrapper">
+    <button class="mat-warn"
+            tabindex="5"
+            mat-raised-button
+            (click)="onCancel()">{{dialogData.buttons.negative}}</button>
+    <button class="mat-primary"
+            tabindex="4"
+            mat-raised-button
+            [disabled]="inputGroup.invalid || !inputGroup.dirty"
+            (click)="onSave()">{{dialogData.buttons.positive}}</button>
+  </mat-dialog-actions>
+</form>
+

@@ -1,0 +1,18 @@
+.buttons-wrapper {
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.info-wrapper {
+  height: 60%;
+}
+
+.mat-form-field {
+  width: 80%;
+  left: 50%;
+  transform: translate(-50%)
+}
+
+h3.mat-dialog-title{
+  margin-top:10px;
+}

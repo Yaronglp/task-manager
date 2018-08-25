@@ -1,0 +1,33 @@
+<form [formGroup]="inputGroup" class="login-form center-element" (keyup.enter)="onLoginClick()">
+
+  <div class="title-wrapper">
+    <span class="title">Organizer </span>
+    <i class="material-icons">fingerprint</i>
+  </div>
+
+  <mat-form-field>
+    <input matInput placeholder="Username" formControlName="userNameControl">
+    <mat-error *ngIf="inputGroup.controls['userNameControl'].errors?.required">
+      Username is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Password" type="password" autocomplete="off" formControlName="passwordControl">
+    <mat-error *ngIf="inputGroup.controls['passwordControl'].errors?.required">
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button
+          color="primary"
+          type="button"
+          [disabled]="inputGroup.invalid || !inputGroup.dirty"
+          (click)="onLoginClick()"
+          class="login-btn">Login</button>
+
+  <mat-error *ngIf="showErrorMsg" class="login-error-msg">
+    {{wrongCredentialsMsg}}
+  </mat-error>
+
+</form>

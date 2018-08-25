@@ -1,0 +1,116 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body{
+  /*background: linear-gradient(to left, #0080ff,#8000ff,#bf00ff);*/
+  background: linear-gradient(to left, #80ced6,#bdcebe,#80ced6);
+  margin-top: 0;
+  font-family: Tahoma, Roboto, "Helvetica Neue", sans-serif;
+}
+
+.shadow{
+  box-shadow:0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+}
+
+.completed{
+  background: greenyellow;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.in-progress{
+  background: yellow;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.todo{
+  background: orange;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.low{
+  color:green;
+}
+
+.medium{
+  color:darkorange;
+}
+
+.high{
+  color: red;
+}
+
+.mat-sort-header-container .mat-sort-header-button{
+  margin: 0 auto !important;
+}
+
+.mat-cell{
+  font-size: 16px;
+}
+
+.mat-dialog-container{
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.mat-dialog-title{
+  text-align: center;
+  outline: none;
+  font-size: 24px;
+}
+
+.mat-dialog-action{
+  justify-content: center;
+}
+
+tr.mat-footer-row, tr.mat-row{
+  max-height: 59px;
+}
+
+.center-dialog-element {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.buttons-wrapper {
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.center-element {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
+.info-wrapper {
+  height: 65%;
+}
+
+.mat-form-field {
+  width: 80%;
+  left: 50%;
+  transform: translate(-50%)
+}
+
+h3.mat-dialog-title{
+  margin-top:10px;
+}
+
+.mat-tooltip{
+  font-size: 14px !important;
+}
+
+.task-header .mat-fab .mat-button-wrapper{
+  padding: 0;
+}
+
+.truncate{
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+}

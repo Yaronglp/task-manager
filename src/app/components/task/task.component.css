@@ -1,0 +1,96 @@
+:root{
+  --font-size-header: 18px;
+}
+
+:host{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 90px;
+  width: calc(100% - 300px);
+  margin:0 auto;
+  min-width: 900px;
+}
+
+@media only screen and (max-width: 1500px) {
+  :host {
+    width: calc(100% - 100px);
+  }
+}
+
+table.task{
+  width: 100%;
+  text-align: center;
+}
+
+th.mat-header-cell{
+  font-size: var(--font-size-header);
+  font-weight: bold;
+  text-align: center;
+}
+
+th.mat-header-cell,
+td.mat-cell{
+  padding: 10px !important;
+}
+
+.mat-header-row .mat-sort-header-container .mat-sort-header-button{
+  margin: 0 auto;
+}
+
+.task-holder{
+  margin-bottom:20px;
+}
+
+.task-table-holder{
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.add-task-btn{
+  font-size: 20px;
+}
+
+.material-icons.spacer{
+  margin-left: 15px;
+}
+
+i.action-task {
+  cursor: pointer;
+}
+
+.filter{
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 10px;
+  width: 250px;
+  outline: none;
+  background: #fff;
+}
+
+.indication-row{
+  flex-wrap: nowrap;
+  width: 12.5%;
+}
+
+.title-row{
+  flex-wrap: nowrap;
+  width: 50%;
+}
+
+.task-header .mat-fab{
+  width: 42px;
+  height: 42px;
+}
+
+.task-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.no-items{
+  background: #fff;
+  padding: 10px;
+  text-align: center;
+}

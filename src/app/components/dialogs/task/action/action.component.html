@@ -1,0 +1,50 @@
+<form [formGroup]="inputGroup" (keydown.enter)="$event.preventDefault();$event.stopPropagation();onSave()">
+  <h3 mat-dialog-title tabindex="1">{{data.title}}</h3>
+
+  <mat-dialog-content class="info-wrapper">
+
+    <div class="center-dialog-element">
+
+      <mat-form-field>
+        <input matInput tabindex="1" placeholder="Task Title" formControlName="taskNameControl">
+        <mat-error *ngIf="inputGroup.controls['taskNameControl'].errors?.required">
+          Task title is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select tabindex="2" placeholder="Status" formControlName="statusControl">
+          <mat-option *ngFor="let status of statusOptArr" [value]="status.value">
+            <span class={{status.viewValue.toLowerCase()}}>{{status.viewValue}}</span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select tabindex="3" placeholder="Priority" formControlName="priorityControl">
+          <mat-option *ngFor="let priority of priorityOptArr" [value]="priority.value">
+            <span class={{priority.viewValue.toLowerCase()}}>{{priority.viewValue}}</span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input tabindex="4" matInput [matDatepicker]="picker" placeholder="Due Date" formControlName="dueDateControl">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="inputGroup.controls['dueDateControl'].errors?.required">
+          Task due date is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="buttons-wrapper">
+    <button tabindex="5" class="mat-warn" mat-raised-button (click)="onCancel()">{{data.buttons.negative}}</button>
+    <button tabindex="6" class="mat-primary" mat-raised-button [disabled]="inputGroup.invalid || !inputGroup.dirty" (click)="onSave()">{{data.buttons.positive}}</button>
+  </mat-dialog-actions>
+
+</form>
+
