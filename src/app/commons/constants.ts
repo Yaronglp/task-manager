@@ -30,5 +30,8 @@ export const CONSTANTS = {
     },
     TASKS: 'tasks',
     JWT_REPLACE: 'jwtReplace'
+  },
+  DISPLAY: {
+    USERNAME_MAX_CHARACTERS: 30
   }
 };

@@ -78,6 +78,11 @@ tr.mat-footer-row, tr.mat-row{
 .buttons-wrapper {
   justify-content: center;
   margin-top: 20px;
+  flex-flow: row-reverse;
+}
+
+.buttons-wrapper > button:first-child {
+  margin-left: 8px;
 }
 
 .center-element {

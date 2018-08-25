@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, HostListener, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {DialogConfig} from '../dialogs/dialog-config';
 import {DeleteTaskComponent} from '../dialogs/task/delete/delete-task.component';
@@ -26,11 +26,6 @@ export class TaskComponent implements OnInit {
     this.taskList = this.taskService.getTasks();
     this.dataSource = new MatTableDataSource(this.taskList);
     this.displayedColumns = ['title', 'status', 'priority', 'dueDate', 'action'];
-  }
-
-  @HostListener('document:keydown.enter')
-  onEnter() {
-    this.openTaskDialog();
   }
 
   ngOnInit() {

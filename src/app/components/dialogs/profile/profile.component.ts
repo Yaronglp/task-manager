@@ -28,17 +28,15 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {}
 
   onSave() {
-    if (this.inputGroup.valid && this.inputGroup.dirty) {
-      const formControl = this.inputGroup.controls;
-      const objToSave = {
-        username: formControl.userNameControl.value,
-        email: formControl.emailControl.value,
-        profilePic: formControl.profilePicControl.value,
-      };
+    const formControl = this.inputGroup.controls;
+    const objToSave = {
+      username: formControl.userNameControl.value,
+      email: formControl.emailControl.value,
+      profilePic: formControl.profilePicControl.value,
+    };
 
-      this.userService.saveUser(objToSave);
-      this.dialogRef.close(objToSave);
-    }
+    this.userService.saveUser(objToSave);
+    this.dialogRef.close(objToSave);
   }
 
   onCancel() {

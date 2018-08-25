@@ -16,9 +16,8 @@ export class DeleteTaskComponent implements OnInit {
   ngOnInit() {
   }
 
-  @HostListener('keydown.enter', ['$event', 'data.id'])
-  onEnter(event: Event, taskId: number) {
-    event.stopImmediatePropagation();
+  @HostListener('keydown.enter', ['data.id'])
+  onEnter(taskId: number) {
     this.onDelete(taskId);
   }
 

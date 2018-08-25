@@ -46,20 +46,18 @@ export class ActionComponent implements OnInit {
   }
 
   onSave(): void {
-    if (this.inputGroup.valid && this.inputGroup.dirty) {
-      const formControl = this.inputGroup.controls;
-      const isNewTask = this.taskId === -1;
-      const objToSave = {
-        status: formControl.statusControl.value,
-        title: formControl.taskNameControl.value,
-        dueDate: new Date(formControl.dueDateControl.value).toLocaleDateString(),
-        priority: formControl.priorityControl.value,
-        id: isNewTask ? this.taskService.setNewId() : this.taskId
-      };
+    const formControl = this.inputGroup.controls;
+    const isNewTask = this.taskId === -1;
+    const objToSave = {
+      status: formControl.statusControl.value,
+      title: formControl.taskNameControl.value,
+      dueDate: new Date(formControl.dueDateControl.value).toLocaleDateString(),
+      priority: formControl.priorityControl.value,
+      id: isNewTask ? this.taskService.setNewId() : this.taskId
+    };
 
-      this.taskService.saveTask(objToSave, isNewTask);
-      this.dialogRef.close({task: objToSave, isNew: isNewTask});
-    }
+    this.taskService.saveTask(objToSave, isNewTask);
+    this.dialogRef.close({task: objToSave, isNew: isNewTask});
   }
 
   private createFormControls(data): void {
