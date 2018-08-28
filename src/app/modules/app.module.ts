@@ -36,7 +36,7 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(
-      appRoutes
+      appRoutes, { useHash: true }
     ),
     FormsModule,
     ReactiveFormsModule,
