@@ -29,7 +29,8 @@ export const CONSTANTS = {
       PROFILE_PIC: 'profilePic'
     },
     TASKS: 'tasks',
-    JWT_REPLACE: 'jwtReplace'
+    JWT_REPLACE: 'jwtReplace',
+    HIDE_COMPLETED: 'hideCompleted'
   },
   DISPLAY: {
     USERNAME_MAX_CHARACTERS: 30

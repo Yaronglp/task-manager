@@ -6,6 +6,7 @@ import {ActionComponent} from '../dialogs/task/action/action.component';
 import {TaskService} from '../../services/task.service';
 import {ITask} from '../../models/interfaces/iTask';
 import EPriority from '../../models/enums/ePriority';
+import EStatus from '../../models/enums/eStatus';
 
 @Component({
   selector: 'app-task',
@@ -15,17 +16,21 @@ import EPriority from '../../models/enums/ePriority';
 export class TaskComponent implements OnInit {
 
   private taskList: Array<ITask>;
+  private filteredTaskList: Array<ITask>;
+  private isHideCompletedChecked: boolean;
   displayedColumns: string[];
   dataSource: any;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild('hideCompletedTask') hideCompletedTask: any;
 
   constructor(public dialog: MatDialog,
               private taskService: TaskService,
               private changeDetectorRef: ChangeDetectorRef) {
     this.taskList = this.taskService.getTasks();
-    this.dataSource = new MatTableDataSource(this.taskList);
+    this.isHideCompletedChecked = this.taskService.isHideCompletedChecked();
     this.displayedColumns = ['title', 'status', 'priority', 'dueDate', 'action'];
+    this.dataSource = new MatTableDataSource(this.fetchFilteredTaskList());
   }
 
   ngOnInit() {
@@ -46,6 +51,9 @@ export class TaskComponent implements OnInit {
         default: return item[property];
       }
     };
+
+    // Workaround for @input checked: boolean value on MatCheckbox
+    this.hideCompletedTask.checked = this.isHideCompletedChecked;
   }
 
   openDeleteDialog(id): void {
@@ -88,11 +96,27 @@ export class TaskComponent implements OnInit {
   }
 
   refreshTable(): void {
-    this.dataSource.data = this.taskList;
+    this.dataSource.data = this.fetchFilteredTaskList();
     this.changeDetectorRef.detectChanges();
   }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  onCheckboxClick(): void {
+    this.isHideCompletedChecked = !this.isHideCompletedChecked;
+    this.taskService.setHideCompletedIndicator(this.isHideCompletedChecked);
+    this.refreshTable();
+  }
+
+  private fetchFilteredTaskList(): Array<ITask> {
+    if (this.isHideCompletedChecked) {
+      this.filteredTaskList = this.taskList.filter((task) => task.status !== EStatus.completed);
+    } else {
+      this.filteredTaskList = [...this.taskList];
+    }
+
+    return this.filteredTaskList;
   }
 }

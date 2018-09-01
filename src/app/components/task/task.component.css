@@ -94,3 +94,10 @@ i.action-task {
   padding: 10px;
   text-align: center;
 }
+
+.task-footer{
+  margin: 0 auto;
+  border-radius: 10px;
+  background: #fff;
+  padding: 10px;
+}

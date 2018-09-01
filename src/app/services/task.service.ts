@@ -45,4 +45,12 @@ export class TaskService {
   setNewId() {
     return TaskService.idNum++;
   }
+
+  isHideCompletedChecked() {
+    return Storage.getItemByKey(CONSTANTS.LOCAL_STORAGE.HIDE_COMPLETED) || false;
+  }
+
+  setHideCompletedIndicator(hideCompleted: boolean) {
+    Storage.setItem(CONSTANTS.LOCAL_STORAGE.HIDE_COMPLETED, hideCompleted);
+  }
 }
