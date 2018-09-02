@@ -7,6 +7,7 @@ import {TaskService} from '../../services/task.service';
 import {ITask} from '../../models/interfaces/iTask';
 import EPriority from '../../models/enums/ePriority';
 import EStatus from '../../models/enums/eStatus';
+import {Utils} from '../../commons/utils';
 
 @Component({
   selector: 'app-task',
@@ -108,6 +109,10 @@ export class TaskComponent implements OnInit {
     this.isHideCompletedChecked = !this.isHideCompletedChecked;
     this.taskService.setHideCompletedIndicator(this.isHideCompletedChecked);
     this.refreshTable();
+  }
+
+  hasDueDatePassed(viewDate: string): boolean {
+    return (new Date(viewDate).getTime() + Utils.dayInMili) <= Utils.todaysDate.getTime();
   }
 
   private fetchFilteredTaskList(): Array<ITask> {

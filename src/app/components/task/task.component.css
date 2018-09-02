@@ -101,3 +101,9 @@ i.action-task {
   background: #fff;
   padding: 10px;
 }
+
+.due-date-overtime{
+  background: rgba(255, 0, 0, 0.5);
+  border-radius: 5px;
+  padding: 5px;
+}

@@ -15,7 +15,11 @@
       <!-- title Column -->
       <ng-container matColumnDef="title">
         <th mat-header-cell ngClass="title-row" *matHeaderCellDef> Title </th>
-        <td mat-cell *matCellDef="let element" ngClass="title-row" matTooltip={{element.title}} matTooltipPosition="below"> {{element.title}} </td>
+        <td mat-cell
+            *matCellDef="let element"
+            ngClass="title-row"
+            matTooltip={{element.title}}
+            matTooltipPosition="below"> {{element.title}} </td>
       </ng-container>
 
       <!-- status Column -->
@@ -37,7 +41,9 @@
       <!-- dueDate Column -->
       <ng-container matColumnDef="dueDate">
         <th mat-header-cell ngClass="indication-row" *matHeaderCellDef mat-sort-header> Due Date </th>
-        <td mat-cell ngClass="indication-row" *matCellDef="let element">{{element.dueDate}}</td>
+        <td mat-cell ngClass="indication-row" *matCellDef="let element">
+          <span [ngClass]="{'due-date-overtime': hasDueDatePassed(element.dueDate)}">{{element.dueDate}}</span>
+        </td>
       </ng-container>
 
       <!-- action Column -->
