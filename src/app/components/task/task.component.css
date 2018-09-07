@@ -95,8 +95,8 @@ i.action-task {
   text-align: center;
 }
 
-.task-footer{
-  margin: 0 auto;
+.filter-completed{
+  margin-bottom: 15px;
   border-radius: 10px;
   background: #fff;
   padding: 10px;

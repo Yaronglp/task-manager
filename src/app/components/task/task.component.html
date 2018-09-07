@@ -1,5 +1,8 @@
 <div class="task-header">
   <input matInput class="filter shadow" (keyup)="applyFilter($event.target.value)" placeholder="Search something...">
+  <div class="filter-completed shadow">
+    <mat-checkbox (click)="onCheckboxClick()" #hideCompletedTask>Hide completed tasks</mat-checkbox>
+  </div>
   <button mat-fab
           color="accent"
           class="add-task-btn"
@@ -67,8 +70,3 @@
     <div class="no-items" *ngIf="dataSource.data.length === 0">{{ 'no items' | titlecase }}</div>
   </div>
 </div>
-
-<div class="task-footer shadow">
-  <mat-checkbox (click)="onCheckboxClick()" #hideCompletedTask>Hide completed tasks</mat-checkbox>
-</div>
-
