@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import EStatus from '../../../../models/enums/eStatus';
@@ -10,7 +10,7 @@ import {TaskService} from '../../../../services/task.service';
   templateUrl: './action.component.html',
   styleUrls: []
 })
-export class ActionComponent implements OnInit {
+export class ActionComponent {
   private taskId: number;
   inputGroup: FormGroup;
   statusOptArr: Array<any>;
@@ -38,8 +38,6 @@ export class ActionComponent implements OnInit {
       id: this.taskId
     };
   }
-
-  ngOnInit() {}
 
   onCancel() {
     this.dialogRef.close();

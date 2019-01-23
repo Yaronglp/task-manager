@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {DialogConfig} from '../dialogs/dialog-config';
 import {DeleteTaskComponent} from '../dialogs/task/delete/delete-task.component';
@@ -25,9 +25,8 @@ export class TaskComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild('hideCompletedTask') hideCompletedTask: any;
 
-  constructor(public dialog: MatDialog,
-              private taskService: TaskService,
-              private changeDetectorRef: ChangeDetectorRef) {
+  constructor(private dialog: MatDialog,
+              private taskService: TaskService) {
     this.taskList = this.taskService.getTasks();
     this.isHideCompletedChecked = this.taskService.isHideCompletedChecked();
     this.displayedColumns = ['title', 'status', 'priority', 'dueDate', 'action'];
@@ -97,8 +96,13 @@ export class TaskComponent implements OnInit {
   }
 
   refreshTable(): void {
+    const itemsPerPage = 10;
+
     this.dataSource.data = this.fetchFilteredTaskList();
-    this.changeDetectorRef.detectChanges();
+
+    if (this.taskList.length === itemsPerPage && this.paginator.hasPreviousPage()) {
+      this.paginator.previousPage();
+    }
   }
 
   applyFilter(filterValue: string) {

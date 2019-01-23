@@ -1,4 +1,4 @@
-import {Component, HostListener, Inject, OnInit} from '@angular/core';
+import {Component, HostListener, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {TaskService} from '../../../../services/task.service';
 
@@ -7,14 +7,11 @@ import {TaskService} from '../../../../services/task.service';
   templateUrl: './delete-task.component.html',
   styleUrls: ['./delete-task.component.css']
 })
-export class DeleteTaskComponent implements OnInit {
+export class DeleteTaskComponent {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private dialogRef: MatDialogRef<DeleteTaskComponent>,
               private taskService: TaskService) { }
-
-  ngOnInit() {
-  }
 
   @HostListener('keydown.enter', ['data.id'])
   onEnter(taskId: number) {

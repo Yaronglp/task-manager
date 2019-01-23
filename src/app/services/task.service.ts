@@ -15,7 +15,7 @@ export class TaskService {
 
     if (tasks) {
       for (const task of tasks) {
-        if (task.id <= idAcc) {
+        if (idAcc <= task.id) {
           idAcc = task.id + 1;
         }
       }
@@ -23,8 +23,6 @@ export class TaskService {
 
     return idAcc;
   }
-
-  constructor() { }
 
   saveTask(task: any, isNew: boolean): void {
     if (isNew) {

@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../services/user.service';
@@ -8,7 +8,7 @@ import {UserService} from '../../../services/user.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
   inputGroup: FormGroup;
 
   constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any,
@@ -24,8 +24,6 @@ export class ProfileComponent implements OnInit {
       profilePicControl: new FormControl(userData.profilePic, [])
     });
   }
-
-  ngOnInit() {}
 
   onSave() {
     const formControl = this.inputGroup.controls;
